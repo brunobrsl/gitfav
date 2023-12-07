@@ -31,7 +31,7 @@ export class Favorites {
       this.entries = [user, ...this.entries]
       this.update()
       this.save()
-
+      this.clearInput()
     } catch(error) {
       alert(error.message)
     }
@@ -125,11 +125,27 @@ export class FavoritesView extends Favorites {
     })
   }
 
+  handleKeypress() {
+    const input = this.root.querySelector('.search input')
+    const inputButton = this.root.querySelector('.search button')
+
+    input.addEventListener('keypress', keypress => {
+      if(keypress.key === 'Enter') {
+        keypress.preventDefault()
+        inputButton.click()
+      }
+    })
+  }
+
   toggleEmptyState() {
     if(this.entries.length == 0) {
       document.querySelector('.empty-state').classList.remove('hide')
     } else {
       document.querySelector('.empty-state').classList.add('hide')
     }
+  }
+
+  clearInput() {
+    this.root.querySelector('.search input').value = ""
   }
 }
