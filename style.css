@@ -185,6 +185,10 @@ tbody::-webkit-scrollbar-thumb {
   border-radius: 1rem;
 }
 
+tbody::-webkit-scrollbar-track {
+  margin-bottom: .4rem;
+}
+
 table tbody tr td {
   padding: 2.4rem 2.4rem 2.4rem 4rem;
 }
